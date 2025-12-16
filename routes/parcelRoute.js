@@ -4,7 +4,7 @@ import Parcel from "../models/Parcel.js";
 const router = express.Router();
 
 /**
- * LIST ALL PARCELS (ADMIN)
+ * GET ALL PARCELS
  * GET /api/parcels
  */
 router.get("/", async (req, res) => {
@@ -48,7 +48,7 @@ router.get("/:trackingCode", async (req, res) => {
 
     res.json(parcel);
   } catch (err) {
-    res.status(500).json({ error: "Server error" });
+    res.status(500).json({ error: "Tracking failed" });
   }
 });
 

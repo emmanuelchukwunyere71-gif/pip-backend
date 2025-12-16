@@ -9,20 +9,22 @@ dotenv.config();
 const app = express();
 
 /* MIDDLEWARE */
-app.use(cors());
+app.use(cors({
+  origin: "*",   // allow GitHub Pages + mobile
+  methods: ["GET", "POST", "PUT", "DELETE"],
+}));
 app.use(express.json());
 
 /* ROUTES */
 app.use("/api/parcels", parcelRoutes);
 
-/* ROOT TEST */
+/* ROOT */
 app.get("/", (req, res) => {
   res.send("PIP Backend is running 🚀");
 });
 
 /* DATABASE */
-mongoose
-  .connect(process.env.MONGO_URI)
+mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("✅ MongoDB Connected"))
   .catch(err => console.error("❌ MongoDB Error", err));
 
