@@ -36,20 +36,16 @@ router.post("/", async (req, res) => {
  * TRACK PARCEL
  * GET /api/parcels/:trackingCode
  */
-router.get("/:trackingCode", async (req, res) => {
+router.get("/", async (req, res) => {
   try {
-    const parcel = await Parcel.findOne({
-      trackingCode: req.params.trackingCode
-    });
-
-    if (!parcel) {
-      return res.status(404).json({ error: "Parcel not found" });
-    }
-
-    res.json(parcel);
+    const parcels = await Parcel.find();
+    console.log("PARCEL COUNT:", parcels.length);
+    res.json(parcels);
   } catch (err) {
-    res.status(500).json({ error: "Tracking failed" });
+    console.error("FETCH ERROR:", err.message);
+    res.status(500).json({ error: "Failed to fetch parcels" });
   }
 });
+
 
 export default router;
