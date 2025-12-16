@@ -1,7 +1,7 @@
 {
   "name": "pip-backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "PIP Unicorn Logistics Backend API",
   "type": "module",
   "main": "server.js",
   "scripts": {
