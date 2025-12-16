@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: pip-backend
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: MONGO_URI
+        value: mongodb+srv://PIPUNICORNLogistics:Bahdboi1@pipunicornlogistics.e3qwq47.mongodb.net/?appName=PIPUNICORNLogistics
